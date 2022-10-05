@@ -1,12 +1,15 @@
-//
+package packages;
+import java.util.*;
+
 public class DetalleOrden {
   private ArrayList<Articulo> articulos;
   private int cantidad;
 
 
-  public detalleOrden(){
+  public DetalleOrden(){
     articulos = new ArrayList<Articulo>();
     cantidad = 0;
+
   }
 
   public void agregarArticulo(Articulo a) {

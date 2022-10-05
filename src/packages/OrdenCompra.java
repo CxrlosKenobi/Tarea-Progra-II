@@ -1,3 +1,5 @@
+package packages;
+import java.util.*;
 public class OrdenCompra{
     private DocTributario docTributario;
     private Date fecha;
