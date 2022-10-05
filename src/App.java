@@ -1,13 +1,12 @@
 import java.util.*;
 
-
 public class App {
     public static void main(String[] args){
-        Articulo a = new Articulo("Coca Cola", "Bebida", 1000, 1);
-        System.out.println(a);
+        System.out.println("hola");
 
     }
 }
+
 
 class OrdenCompra{
     private DocTributario docTributario;
@@ -69,7 +68,6 @@ class OrdenCompra{
     }
 
 }
-
 class Cliente{
     private String nombre;
     private String rut;
@@ -116,7 +114,7 @@ class Factura{
 
 }
 
-class abstract Pago{
+abstract class Pago{
     private float monto;
     private Date fecha;
 
