@@ -1,3 +1,5 @@
+package packages;
+
 public class Articulo {
   private float peso;
   private String nombre;
