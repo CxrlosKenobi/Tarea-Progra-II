@@ -139,4 +139,54 @@ class Transferencia extends Pago{
     
 }
 
-Implemented 
+class Tarjeta extends Pago{
+
+
+}
+
+class Articulo{
+private float peso;
+private String nombre;
+private String descripcion;
+private float precio;
+    //Inicializo los valores en el constructor
+    public Articulo(){
+        peso = 0;
+        nombre = "";
+        descripcion = "";
+        precio = 0;
+    }
+    public Articulo(String nombre, String descripcion, float precio, float peso ){
+        this.peso = peso;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+    }
+
+    @Override
+    public String toString() {
+        return "Articulo [descripcion=" + descripcion + ", nombre=" + nombre + ", peso=" + peso + ", precio=" + precio+ "]";
+    }
+}
+
+class detalleOrden{
+    private ArrayList<Articulo> articulos;
+    private int cantidad;
+
+
+    public detalleOrden(){
+        articulos = new ArrayList<Articulo>();
+        cantidad = 0;
+    }
+
+    public void agregarArticulo(Articulo a){
+        articulos.add(a);
+        this.cantidad++;
+    }
+
+    public void eliminarArticulo(Articulo a){
+        articulos.remove(a);
+        this.cantidad--;
+    }
+}
+
