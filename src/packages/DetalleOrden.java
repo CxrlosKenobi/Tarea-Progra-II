@@ -21,4 +21,14 @@ public class DetalleOrden {
     articulos.remove(a);
     this.cantidad--;
   }
+
+  public int getCantidad() {
+    return cantidad;
+  }
+  
+
+  @Override
+  public String toString() {
+    return "DetalleOrden [articulos=" + articulos + ", cantidad=" + cantidad + "]";
+  }
 }
