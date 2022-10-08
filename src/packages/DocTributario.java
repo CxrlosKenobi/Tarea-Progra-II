@@ -3,19 +3,19 @@ package packages;
 import java.util.Date;
 
 public abstract class DocTributario {
-    private String numero;
+    private long numero;
     private String rut;
     private Date fecha;
     private Direccion direccion;
 
-    public DocTributario() {
-        this.numero = "";
-        this.rut = "";
+    public DocTributario(long numero, String rut, Direccion direccion) {
+        this.numero = numero;
+        this.rut = rut;
         this.fecha = new Date();
-        this.direccion = null;
+        this.direccion = direccion;
     }
 
-    public String getNumero() {
+    public long getNumero() {
         return numero;
     }
 
@@ -27,7 +27,7 @@ public abstract class DocTributario {
         return fecha;
     }
 
-    public void setNumero(String numero) {
+    public void setNumero(long numero) {
         this.numero = numero;
     }
 

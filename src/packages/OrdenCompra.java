@@ -67,20 +67,93 @@ public class OrdenCompra {
     }
 
 
-    // Con este metodo se finaliza la orden de compra y se genera el documento tributario
-    public void finalizarCompra(int a) {
-        if (a == 1) {
+    
+    public void finalizarOrden(String tipoDocTributario) {
+        if (tipoDocTributario.toLowerCase().equals("boleta")) {
+            System.out.println("Creando boleta...");
+            float total = calcPrecio();
             this.estado = "Finalizada";
-            this.docTributario = new Boleta();
+            
 
-        } else {
+            long nroBoleta = fecha.getTime() / 1000;
+            this.docTributario = new Boleta(nroBoleta, cliente.getRut(), cliente.getDireccion());
+
+            if (pagos.isEmpty()) { // Comprobando pagos
+                System.out.println("No se ha realizado ningun pago");
+
+            } else {
+                // Si el pago por completo es en efectivo
+                if (pagos.stream().allMatch(pago -> pago instanceof Efectivo)) {
+                    float totalPagos = 0;
+                    for (Pago pago : pagos)
+                        totalPagos += pago.getMonto();
+
+                    if (totalPagos >= total) {
+                        System.out.println("Pago realizado con exito");
+                        System.out.println("Su cambio es de: " + (totalPagos - total));
+
+                    } else System.out.println("No tiene suficiente dinero");
+                }else{
+                
+                    float totalPagos = 0;
+                    for (Pago pago : pagos) {
+                        totalPagos += pago.getMonto();
+                    }
+                    if (totalPagos < total) {
+                        System.out.println("No se ha realizado el pago total");
+                    } else {
+                        System.out.println("Pago realizado");
+                    }
+                }
+            }
+
+        } else if (tipoDocTributario.toLowerCase().equals("factura")) {
+            float total = calcPrecio();
             this.estado = "Finalizada";
-            this.docTributario = new Factura();
+            
+            long nroFactura = fecha.getTime() / 1000;
+            this.docTributario = new Factura(nroFactura, cliente.getRut(), cliente.getDireccion());
+
+            if (pagos.isEmpty()) {
+                System.out.println("No se ha realizado ningun pago");
+
+            } else {
+                // Si el pago por completo es en efectivo
+                if (pagos.stream().allMatch(pago -> pago instanceof Efectivo)) {
+                    float totalPagos = 0;
+                    for (Pago pago : pagos)
+                        totalPagos += pago.getMonto();
+
+                    if (totalPagos >= total) {
+                        System.out.println("Pago realizado con exito");
+                        System.out.println("Su cambio es de: " + (totalPagos - total));
+
+                    } else System.out.println("No tiene suficiente dinero");
+                    
+                }else{
+
+                    float totalPagos = 0;
+                    for (Pago pago : pagos) {
+                        totalPagos += pago.getMonto();
+                    }
+                    if (totalPagos < total) {
+                        System.out.println("No se ha realizado el pago total");
+                    } else {
+                        System.out.println("Pago realizado");
+                    }
+                }
+            }
+
         }
     }
 
 
     // Getters and Setters
+    public ArrayList<DetalleOrden> getDetallesOrdenes() {
+        return detallesOrdenes;
+    }
+
+
     public void addPago(Pago pago) {
         this.pagos.add(pago);
     }
@@ -89,8 +162,9 @@ public class OrdenCompra {
         return pagos.toArray(new Pago[pagos.size()]);
     }
 
-    public void addProducto(DetalleOrden detallesOrdenes) {
-        this.detallesOrdenes.add(detallesOrdenes);
+    public void addProducto(Articulo articulo, int cantidad) {
+        DetalleOrden detalleOrden = new DetalleOrden(articulo, cantidad);
+        this.detallesOrdenes.add(detalleOrden);
     }
 
     public void setDocTributario(DocTributario docTributario) {
@@ -127,8 +201,8 @@ public class OrdenCompra {
 
     @Override
     public String toString() {
-        return "OrdenCompra [cliente=" + cliente + ", docTributario=" + docTributario + ", estado=" + estado
-                + ", fecha=" + fecha + "]";
+        return "OrdenCompra [cliente=" + this.cliente + ", docTributario=" + this.docTributario + ", estado=" + this.estado
+                + ", fecha=" + this.fecha + "]";
     }
 
 }
