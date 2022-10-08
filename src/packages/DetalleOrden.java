@@ -1,73 +1,49 @@
 package packages;
-import java.util.*;
 
 public class DetalleOrden {
-  private ArrayList<Articulo> articulos;
+  private Articulo articulo;
   private int cantidad;
 
-  public DetalleOrden() {
-    this.articulos = new ArrayList<Articulo>();
-    this.cantidad = articulos.size();
+  public DetalleOrden(Articulo a, int cant) {
+    this.articulo = a;
+    this.cantidad = cant;
   }
 
   public float calcPrecio() {
-    float precio = 0;
-    for (Articulo articulo : articulos) {
-      precio += articulo.getPrecio();
-    }
-
-    precio = (float) (precio * 1.19); // +19% de IVA
-    return precio;
+    float total;
+    total = this.cantidad * this.articulo.getPrecio();
+      
+    return (float) (total * 1.19);
   };
 
   public float calcPrecioSinIVA() {
-    float precio = 0;
-    for (Articulo articulo : articulos) {
-      precio += articulo.getPrecio();
-    }
+    float total;
+    total = this.cantidad * this.articulo.getPrecio();
 
-    return precio;
+    return total;
   };
 
   public float calcIVA() {
-    float precio = 0;
-    for (Articulo articulo : articulos) {
-      precio += articulo.getPrecio();
-    }
+    float total;
+    total = this.cantidad * this.articulo.getPrecio();
 
-    precio = (float) (precio * 0.19); // 19% de IVA
-    return precio;
+    return (float) (total * 0.19);
   };
 
   public float calcPeso() {
-    float pesoTotal = 0;
-    for (Articulo articulo : articulos) {
-      pesoTotal += articulo.getPeso();
-    }
-
-    return pesoTotal;
+    float peso;
+    peso = this.cantidad * this.articulo.getPeso();
+    
+    return peso;
   };
 
-  // Helper methods 
-  public void agregarArticulo(Articulo a) {
-    articulos.add(a);
-    this.cantidad++;
-  }
-
-  public void eliminarArticulo(Articulo a) {
-    if (!articulos.isEmpty()) {
-      articulos.remove(a);
-      this.cantidad--;
-    }
-  }
 
   public int getCantidad() {
     return cantidad;
   }
-  
 
   @Override
   public String toString() {
-    return "DetalleOrden [articulos=" + articulos + ", cantidad=" + cantidad + "]";
+    return "DetalleOrden [articulo=" + articulo + ", cantidad=" + cantidad + "]";
   }
 }

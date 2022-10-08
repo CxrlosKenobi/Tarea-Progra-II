@@ -1,15 +1,15 @@
 ## Task list
 
 - [x] Articulo.java
-- [ ] Boleta.java
+- [x] Boleta.java
 - [x] Cliente.java
 - [x] DetalleOrden.java
-- [ ] Direccion.java
-- [ ] DocTributario.java
+- [x] Direccion.java
+- [x] DocTributario.java
 - [x] Efectivo.java
-- [ ] Factura.java
+- [x] Factura.java
 - [ ] OrdenCompra.java
-- [x] Pago.java
+- [ ] Pago.java
 - [x] Tarjeta.java
 - [x] Transferencia.java
 

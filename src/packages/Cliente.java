@@ -1,30 +1,32 @@
 package packages;
+
 public class Cliente {
   private String nombre;
   private String rut;
-  
-  public Cliente(String nombre, String rut) {
+  private Direccion direccion;
+
+  public Cliente(String nombre, String rut, Direccion direccion) {
+    this.direccion = direccion;
     this.nombre = nombre;
     this.rut = rut;
   }
 
-  //getters y setters
-  public void setNombre(String nombre){
+  // getters y setters
+  public void setNombre(String nombre) {
     this.nombre = nombre;
   }
 
-  public String getNombre(){
+  public String getNombre() {
     return nombre;
   }
 
-  public void setRut(String rut){
+  public void setRut(String rut) {
     this.rut = rut;
   }
 
-  public String getRut(){
+  public String getRut() {
     return rut;
   }
-
 
   @Override
   public String toString() {
