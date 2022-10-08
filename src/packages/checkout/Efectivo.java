@@ -1,4 +1,4 @@
-package packages;
+package packages.checkout;
 
 public class Efectivo extends Pago {
     public Efectivo(float monto) {

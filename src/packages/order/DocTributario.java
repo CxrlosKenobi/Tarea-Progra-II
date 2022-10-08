@@ -1,6 +1,8 @@
-package packages;
+package packages.order;
 
 import java.util.Date;
+
+import packages.customer.Direccion;
 
 public abstract class DocTributario {
     private long numero;

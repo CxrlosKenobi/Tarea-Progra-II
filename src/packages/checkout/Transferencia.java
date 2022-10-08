@@ -1,4 +1,4 @@
-package packages;
+package packages.checkout;
 
 public class Transferencia extends Pago{
     private String banco;

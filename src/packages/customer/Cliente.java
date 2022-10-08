@@ -1,4 +1,4 @@
-package packages;
+package packages.customer;
 
 public class Cliente {
   private String nombre;

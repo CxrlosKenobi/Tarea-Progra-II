@@ -1,4 +1,4 @@
-package packages;
+package packages.cart;
 
 public class DetalleOrden {
   private Articulo articulo;

@@ -1,5 +1,6 @@
-package packages;
+package packages.checkout;
 import java.util.*;
+
 public abstract class Pago {
     private float monto;
     private Date fecha;

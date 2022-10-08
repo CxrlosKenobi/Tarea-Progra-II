@@ -1,6 +1,12 @@
-package packages;
+package packages.order;
 
 import java.util.*;
+
+import packages.cart.Articulo;
+import packages.cart.DetalleOrden;
+import packages.checkout.Efectivo;
+import packages.checkout.Pago;
+import packages.customer.Cliente;
 
 public class OrdenCompra {
     private DocTributario docTributario;

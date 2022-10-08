@@ -1,4 +1,6 @@
-package packages;
+package packages.order;
+
+import packages.customer.Direccion;
 
 public class Factura extends DocTributario {
 

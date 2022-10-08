@@ -1,4 +1,8 @@
-import packages.*;
+import packages.cart.Articulo;
+import packages.checkout.Efectivo;
+import packages.customer.Cliente;
+import packages.customer.Direccion;
+import packages.order.OrdenCompra;
 
 public class App {
     public static void main(String[] args) {
@@ -27,7 +31,7 @@ public class App {
         metanfetaminas.addProducto(art5, 4);
         
 
-        // Pagos / Payments
+        // Pagos
         Efectivo efectivo1 = new Efectivo(20000.0f);
 
         metanfetaminas.addPago(efectivo1);
