@@ -1,34 +1,29 @@
-## Task list
+# Tarea 1 - Programación II
 
-- [x] Articulo.java
-- [x] Boleta.java
-- [x] Cliente.java
-- [x] DetalleOrden.java
-- [x] Direccion.java
-- [x] DocTributario.java
-- [x] Efectivo.java
-- [x] Factura.java
-- [ ] OrdenCompra.java
-- [ ] Pago.java
-- [x] Tarjeta.java
-- [x] Transferencia.java
+> ([Informática UdeC](https://fi.udec.cl/pregrado/ingenieria-civil-informatica/) 2022-2)
 
 
-## Getting Started
+## UML a Código y Uso de Git
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+### Integrantes
+- [Sebastián Benjamín Bustos Beni](https://github.com/sebasinmas)
+- [Carlos Efraín Pinto Urtubia](https://github.com/CxrlosKenobi)
 
-## Folder Structure
+---
+### Estructura de proyecto
 
-The workspace contains two folders by default, where:
+El espacio de trabajo contiene las siguientes carpetas, donde:
+- `src`: la carpeta para mantener el código fuente de la tarea.
+- `assets`: la carpeta para mantener archivos que brindan contexto al repo.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+Mientras que la sub carpeta `src.packages` contiene el siguiente árbol de carpetas nombradas semánticamente conteniendo:
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+- `cart`: implementación de clases relacionadas con el manejo de los productos en la orden de compra.
+- `checkout`: implementación de clases relacionadas con el manejo del proceso de pago.
+- `customer`: implementación de clases relacionadas con el cliente y su información.
+- `order`: implementación de clases relacionadas con la orden de compra y sus detalles.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
 
-## Dependency Management
+### Diagrama UML
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+![Diagrama UML](assets/UML.png)
