@@ -1,13 +1,9 @@
 package packages;
-import java.util.*;
-public class Boleta extends DocTributario{
-  
 
-    public Boleta(){
+public class Boleta extends DocTributario {
+
+    public Boleta() {
         super();
     }
-    
-
-    
 
 }

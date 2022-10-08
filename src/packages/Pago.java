@@ -4,10 +4,17 @@ public abstract class Pago {
     private float monto;
     private Date fecha;
    
-    public Pago(float cantidad){
+    public Pago (float cantidad) {
         this.monto = cantidad;
         this.fecha = new Date();
     }
+
+    public void pagoEnEfectivo() {
+    };
+
+    public void pagoConTarjeta() {};
+
+
 
     public float getMonto() {
         return monto;
