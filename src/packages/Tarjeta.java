@@ -4,8 +4,10 @@ public class Tarjeta extends Pago {
     private String numTransaccion;
     private String tipo;
 
-    public Tarjeta(float monto){
+    public Tarjeta(float monto, String numTransaccion, String tipo) {
         super(monto);
+        this.numTransaccion = numTransaccion;
+        this.tipo = tipo;
     }
     
     //getters and setters

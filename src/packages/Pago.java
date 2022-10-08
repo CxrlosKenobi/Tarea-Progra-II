@@ -5,8 +5,8 @@ public abstract class Pago {
     private Date fecha;
    
     public Pago(float cantidad){
-        this.monto=cantidad;
-        this.fecha=new Date();
+        this.monto = cantidad;
+        this.fecha = new Date();
     }
 
     public float getMonto() {
@@ -24,6 +24,6 @@ public abstract class Pago {
 
     @Override
     public String toString() {
-        return "Pago [fecha=" + fecha + ", monto=" + monto + "]";
+        return "Pago [fecha=" + fecha + ", monto=" + monto + ", tipo=" + this.getClass().getSimpleName() + "]";
     }
 }
