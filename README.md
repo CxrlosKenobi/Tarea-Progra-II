@@ -1,3 +1,19 @@
+## Task list
+
+- [x] Articulo.java
+- [ ] Boleta.java
+- [x] Cliente.java
+- [x] DetalleOrden.java
+- [ ] Direccion.java
+- [ ] DocTributario.java
+- [x] Efectivo.java
+- [ ] Factura.java
+- [ ] OrdenCompra.java
+- [x] Pago.java
+- [x] Tarjeta.java
+- [x] Transferencia.java
+
+
 ## Getting Started
 
 Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.

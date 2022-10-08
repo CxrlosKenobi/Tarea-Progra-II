@@ -15,10 +15,17 @@ public class Articulo {
   }
   
   public Articulo(String nombre, String descripcion, float precio, float peso ) {
-    this.peso = peso;
     this.nombre = nombre;
     this.descripcion = descripcion;
     this.precio = precio;
+    this.peso = peso;
+  }
+
+  public float getPrecio() {
+    return this.precio;
+  }
+  public float getPeso() {
+    return this.peso;
   }
 
   @Override

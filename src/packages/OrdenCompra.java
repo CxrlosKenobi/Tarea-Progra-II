@@ -5,52 +5,53 @@ public class OrdenCompra{
     private Date fecha;
     private String estado;
     private Cliente cliente;
+
     public OrdenCompra(){
-        docTributario = null;
-        fecha = new Date();
-        estado = "Pendiente";
-        cliente = null;
+        this.docTributario = null;
+        this.fecha = new Date();
+        this.estado = "Pendiente";
+        this.cliente = null;
     }
     
     //Methods 
-    public float calcPrecioSinIVA(){
+    public float calcPrecioSinIVA() {
         return 0;
     }
-    public float calcIVA(){
+    public float calcIVA() {
         return 0;
     }
 
-    public float calcPrecio(){
+    public float calcPrecio() {
         return 0;
     }
     
-    public float calcPeso(){
+    public float calcPeso() {
         return 0;
     }
 
-    //getters and setters
-    public void setDocTributario(DocTributario docTributario){
+    // Getters and Setters
+    public void setDocTributario(DocTributario docTributario) {
         this.docTributario = docTributario;
     }
-    public DocTributario getDocTributario(){
+    public DocTributario getDocTributario() {
         return docTributario;
     }
-    public void setFecha(Date fecha){
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-    public Date getFecha(){
+    public Date getFecha() {
         return fecha;
     }
-    public void setEstado(String estado){
+    public void setEstado(String estado) {
         this.estado = estado;
     }
-    public String getEstado(){
+    public String getEstado() {
         return estado;
     }
-    public void setCliente(Cliente cliente){
+    public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    public Cliente getCliente(){
+    public Cliente getCliente() {
         return cliente;
     }
 
