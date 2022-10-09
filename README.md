@@ -12,7 +12,7 @@
 ---
 ### Estructura de proyecto
 
-El espacio de trabajo contiene las siguientes carpetas, donde:
+El espacio de trabajo desarrollado bajo el ambiente de [Java Maven](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-maven) para [VSCode](https://code.visualstudio.com/) contiene las siguientes carpetas, donde:
 - `src`: la carpeta para mantener el código fuente de la tarea.
 - `assets`: la carpeta para mantener archivos que brindan contexto al repo.
 
