@@ -48,17 +48,16 @@ class OrdenDeVenta1 {
 class OrdenDeVenta2 {
     public OrdenDeVenta2() {
         // Información del Cliente
-        Direccion direccion = new Direccion("9809 Margo Street, Albuquerque, New Mexico");
-        Cliente cliente = new Cliente("Jesse Pinkman", "12323677-9", direccion);
+        Direccion direccion = new Direccion("192 6th Ave, New York, New York.");
+        Cliente cliente = new Cliente("Tom Hanks", "12345677-9", direccion);
 
         // Articulos
-        Articulo art1 = new Articulo("Efedrina", "Químico con propiedades estimulantes", 1000f, 0.250f);
-        Articulo art2 = new Articulo("Acido Yodhidrico", "Químico con propiedades corrosivas", 500f, 0.500f);
-        Articulo art3 = new Articulo("Fosforo rojo", "Químico con propiedades explosivas", 200f, 0.100f);
-        Articulo art4 = new Articulo("Metal de litio", "Químico con propiedades inflamables", 300f, 0.200f);
-        Articulo art5 = new Articulo("Amoniaco Anhidro", "Químico con propiedades corrosivas", 400f, 0.300f);
+        Articulo art1 = new Articulo("Coca Cola", "Bebida gaseosa", 1000f, 0.250f);
+        Articulo art2 = new Articulo("Pepsi", "Bebida gaseosa", 500f, 0.500f);
+        Articulo art3 = new Articulo("Fanta", "Bebida gaseosa", 200f, 0.100f);
+        Articulo art4 = new Articulo("Sprite", "Bebida gaseosa", 300f, 0.200f);
+        Articulo art5 = new Articulo("7up", "Bebida gaseosa", 400f, 0.300f);
 
-        // Orden de venta llamada "metanfetaminas" (Temático de la serie Breaking Bad)
         OrdenCompra metanfetaminas = new OrdenCompra(cliente);
 
         // Detalles de la orden
@@ -69,13 +68,8 @@ class OrdenDeVenta2 {
         metanfetaminas.addProducto(art5, 4);
 
         // Pagos
-        Efectivo efectivo = new Efectivo(2000.0f);
-        Tarjeta tarjeta = new Tarjeta(5000f, "00002", "visa");
-        Transferencia transferencia = new Transferencia(5000f, "Mesa Verde", "9294013");
-
-        metanfetaminas.addPago(efectivo);
+        Tarjeta tarjeta = new Tarjeta(20000f, "00002", "Debito");
         metanfetaminas.addPago(tarjeta);
-        metanfetaminas.addPago(transferencia);
 
         metanfetaminas.finalizarOrden("Factura");
 
@@ -85,7 +79,7 @@ class OrdenDeVenta2 {
 
 class OrdenDeVenta3 {
     public OrdenDeVenta3() {
-        Direccion direccion = new Direccion("9809 Margo Street, Albuquerque, New Mexico.");
+        Direccion direccion = new Direccion("1234 Main Street, Albuquerque, New Mexico");
         Cliente cliente = new Cliente("Buzz Lightyear", "9380291-9", direccion);
 
         Articulo art1 = new Articulo("5” Frame", "Cuerpo plástico para armazón de dron", 15000f, 0.250f);
