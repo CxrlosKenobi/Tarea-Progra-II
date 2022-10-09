@@ -46,7 +46,11 @@ public abstract class DocTributario {
 
     @Override
     public String toString() {
-        return "DocTributario [fecha=" + fecha + ", numero=" + numero + ", rut=" + rut + ", tipo="
-                + this.getClass().getSimpleName() + "]";
+        return "DocTributario [tipo=" +
+            this.getClass().getSimpleName() + 
+            ", fecha=" + fecha +
+            ", numero="+ numero +
+            ", rut=" + rut +
+            "]";
     }
 }

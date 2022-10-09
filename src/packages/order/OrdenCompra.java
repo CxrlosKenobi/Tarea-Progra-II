@@ -1,11 +1,10 @@
 package packages.order;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
-import packages.cart.Articulo;
-import packages.cart.DetalleOrden;
-import packages.checkout.Efectivo;
-import packages.checkout.Pago;
+import packages.cart.*;
+import packages.checkout.*;
 import packages.customer.Cliente;
 
 public class OrdenCompra {
@@ -72,93 +71,77 @@ public class OrdenCompra {
             return -1;
     }
 
+    public float calcPagos() {
+        float total = this.calcPrecio();
 
-    
-    public void finalizarOrden(String tipoDocTributario) {
-        if (tipoDocTributario.toLowerCase().equals("boleta")) {
-            System.out.println("Creando boleta...");
-            float total = calcPrecio();
-            this.estado = "Finalizada";
-            
+        if (pagos.isEmpty())
+            return -1f;
 
-            long nroBoleta = fecha.getTime() / 1000;
-            this.docTributario = new Boleta(nroBoleta, cliente.getRut(), cliente.getDireccion());
+        float totalPagos = 0;
+        if (pagos.stream().allMatch(pago -> pago instanceof Efectivo)) {
+            // Si el pago por completo es en efectivo
+            for (Pago pago : pagos)
+                totalPagos += pago.getMonto();
 
-            if (pagos.isEmpty()) { // Comprobando pagos
-                System.out.println("No se ha realizado ningun pago");
+            if (totalPagos < total) {
+                return -1f;
+            } else
+                return totalPagos;
 
-            } else {
-                // Si el pago por completo es en efectivo
-                if (pagos.stream().allMatch(pago -> pago instanceof Efectivo)) {
-                    float totalPagos = 0;
-                    for (Pago pago : pagos)
-                        totalPagos += pago.getMonto();
+        } else if (pagos.stream().anyMatch(pago -> pago instanceof Efectivo)) {
+            // Si el pago es parcial en efectivo
+            for (Pago pago : pagos)
+                totalPagos += pago.getMonto();
 
-                    if (totalPagos >= total) {
-                        System.out.println("Pago realizado con exito");
-                        System.out.println("Su cambio es de: " + (totalPagos - total));
+            if (totalPagos < total) {
+                return -1f;
+            } else
+                return totalPagos;
 
-                    } else System.out.println("No tiene suficiente dinero");
-                }else{
-                
-                    float totalPagos = 0;
-                    for (Pago pago : pagos) {
-                        totalPagos += pago.getMonto();
-                    }
-                    if (totalPagos < total) {
-                        System.out.println("No se ha realizado el pago total");
-                    } else {
-                        System.out.println("Pago realizado");
-                    }
-                }
-            }
+        } else {
+            for (Pago pago : pagos)
+                totalPagos += pago.getMonto();
 
-        } else if (tipoDocTributario.toLowerCase().equals("factura")) {
-            float total = calcPrecio();
-            this.estado = "Finalizada";
-            
-            long nroFactura = fecha.getTime() / 1000;
-            this.docTributario = new Factura(nroFactura, cliente.getRut(), cliente.getDireccion());
-
-            if (pagos.isEmpty()) {
-                System.out.println("No se ha realizado ningun pago");
-
-            } else {
-                // Si el pago por completo es en efectivo
-                if (pagos.stream().allMatch(pago -> pago instanceof Efectivo)) {
-                    float totalPagos = 0;
-                    for (Pago pago : pagos)
-                        totalPagos += pago.getMonto();
-
-                    if (totalPagos >= total) {
-                        System.out.println("Pago realizado con exito");
-                        System.out.println("Su cambio es de: " + (totalPagos - total));
-
-                    } else System.out.println("No tiene suficiente dinero");
-                    
-                }else{
-
-                    float totalPagos = 0;
-                    for (Pago pago : pagos) {
-                        totalPagos += pago.getMonto();
-                    }
-                    if (totalPagos < total) {
-                        System.out.println("No se ha realizado el pago total");
-                    } else {
-                        System.out.println("Pago realizado");
-                    }
-                }
-            }
-
+            if (totalPagos < total) {
+                return -1f;
+            } else
+                return 0f;
         }
     }
 
+    public float calcVuelto() {
+        float total = this.calcPrecio();
+        float totalPagos = this.calcPagos();
+
+        if (((totalPagos - total) < 0) || (totalPagos == -1f)) {
+            return 0.0f;
+
+        } else {
+            return totalPagos - total;
+        }
+    }
+
+    public void finalizarOrden(String tipoDocTributario) {
+        if (tipoDocTributario.toLowerCase().equals("boleta")) {
+            this.estado = "Finalizada";
+
+            long nroBoleta = fecha.getTime() / 1000;
+            this.docTributario = new Boleta(nroBoleta, cliente.getRut(), cliente.getDireccion());
+            this.calcPagos();
+
+        } else if (tipoDocTributario.toLowerCase().equals("factura")) {
+            this.estado = "Finalizada";
+
+            long nroFactura = fecha.getTime() / 1000;
+            this.docTributario = new Factura(nroFactura, cliente.getRut(), cliente.getDireccion());
+            this.calcPagos();
+        }
+    }
 
     // Getters and Setters
     public ArrayList<DetalleOrden> getDetallesOrdenes() {
         return detallesOrdenes;
     }
-
 
     public void addPago(Pago pago) {
         this.pagos.add(pago);
@@ -207,8 +190,26 @@ public class OrdenCompra {
 
     @Override
     public String toString() {
-        return "OrdenCompra [cliente=" + this.cliente + ", docTributario=" + this.docTributario + ", estado=" + this.estado
-                + ", fecha=" + this.fecha + "]";
-    }
+        String ordenCompleta = "\n\tOrden de Compra (" + this.estado + "):\n\n" +
+                "> " + this.docTributario + "\n" +
+                "> " + this.cliente + "\n" +
 
+                "\n\t" + "Detalles de la orden:\n\n" +
+                // Imprimimos cada metodo .toString para cada DetalleOrden
+                "- " + detallesOrdenes.stream().map(DetalleOrden::toString).collect(Collectors.joining("\n- ")) +
+
+                "\n\n  Subtotal: $" + this.calcPrecioSinIVA() + "\n" +
+                "  IVA: $" + this.calcIVA() + "\n" +
+                "> Total: $" + this.calcPrecio() + "\n\n" +
+                "- " + pagos.stream().map(Pago::toString).collect(Collectors.joining("\n- ")) + "\n";
+
+        if (this.calcPagos() == -1f) {
+            ordenCompleta += "\n> Pago insuficiente, vuelva a intentarlo.\n";
+
+        } else {
+            ordenCompleta += "\n  Vuelto: $" + this.calcVuelto() + "\n";
+        }
+
+        return ordenCompleta;
+    }
 }

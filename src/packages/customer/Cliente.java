@@ -17,7 +17,7 @@ public class Cliente {
   }
 
   public String getNombre() {
-    return nombre;
+    return this.nombre;
   }
 
   public void setRut(String rut) {
@@ -25,14 +25,14 @@ public class Cliente {
   }
 
   public String getRut() {
-    return rut;
+    return this.rut;
   }
   public Direccion getDireccion() {
-    return direccion;
+    return this.direccion;
   }
 
   @Override
   public String toString() {
-    return "Cliente [nombre=" + nombre + ", rut=" + rut + "]";
+    return "Cliente [nombre=" + this.nombre + ", rut=" + this.rut + "]" + "\n> " + this.direccion;
   }
 }

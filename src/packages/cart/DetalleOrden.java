@@ -44,6 +44,7 @@ public class DetalleOrden {
 
   @Override
   public String toString() {
-    return "DetalleOrden [articulo=" + articulo + ", cantidad=" + cantidad + "]";
+    return this.articulo.toString() +
+        "\n--- DetalleOrden [cantidad=" + this.cantidad +"]";
   }
 }

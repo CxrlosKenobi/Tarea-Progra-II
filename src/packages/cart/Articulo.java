@@ -31,7 +31,10 @@ public class Articulo {
 
   @Override
   public String toString() {
-    return "Articulo [descripcion=" + descripcion + ", nombre=" + nombre + ", peso=" + peso + ", precio=" + precio
+    return "Articulo [precio=$" + this.precio +
+        ", nombre=" + this.nombre +
+        ", peso=" + this.peso + "g" +
+        ", desc=" + this.descripcion
         + "]";
   }
 }
