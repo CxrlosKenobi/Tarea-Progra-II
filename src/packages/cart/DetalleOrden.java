@@ -38,10 +38,6 @@ public class DetalleOrden {
   };
 
 
-  public int getCantidad() {
-    return cantidad;
-  }
-
   @Override
   public String toString() {
     return this.articulo.toString() +

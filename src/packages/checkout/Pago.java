@@ -10,24 +10,8 @@ public abstract class Pago {
         this.fecha = new Date();
     }
 
-    public void pagoEnEfectivo() {
-    };
-
-    public void pagoConTarjeta() {};
-
-
-
     public float getMonto() {
         return monto;
-    }
-    public void setMonto(float monto) {
-        this.monto = monto;
-    }
-    public Date getFecha() {
-        return fecha;
-    }
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
     }
 
     @Override
